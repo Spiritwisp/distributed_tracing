@@ -14,12 +14,8 @@ dependencies {
     implementation group: 'de.bwaldvogel', name: 'mongo-java-server', version: '1.38.0'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '2.5.5'
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth', version: '3.0.4'
-    implementation group: 'io.opentracing.contrib', name: 'opentracing-mongo-driver', version: '0.1.5'
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-sleuth-zipkin', version: '3.0.4'
     implementation group: 'io.opentracing.brave', name: 'brave-opentracing', version: '1.0.0'
-
-
-
 
 }
 

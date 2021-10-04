@@ -1,12 +1,14 @@
 package com.godle.presentation.tracing.config;
 
+import brave.Tracing;
+import brave.mongodb.MongoDBTracing;
+import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
+import com.mongodb.event.CommandListener;
 import de.bwaldvogel.mongo.MongoServer;
-import io.opentracing.Tracer;
-import io.opentracing.contrib.mongo.common.TracingCommandListener;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.MongoDatabaseFactory;
@@ -18,18 +20,17 @@ import java.net.InetSocketAddress;
 @Configuration
 public class MongoConfig {
 
-  private final Tracer tracer;
+  private final Tracing tracing;
+  private final String dbName;
 
-  @Autowired
-  public MongoConfig(Tracer tracer) {
-    this.tracer = tracer;
+  public MongoConfig(Tracing tracing, @Value("${spring.data.mongodb.database}") String dbName) {
+    this.tracing = tracing;
+    this.dbName = dbName;
   }
 
   @Bean
-  public MongoDatabaseFactory mongoDatabaseFactory(MongoServer mongoServer) {
-    InetSocketAddress serverAddress = mongoServer.getLocalAddress();
-    return new SimpleMongoClientDatabaseFactory(
-        "mongodb://" + serverAddress.getHostName() + ":" + serverAddress.getPort() + "/test");
+  public MongoDatabaseFactory mongoDatabaseFactory(MongoClient mongoClient) {
+    return new SimpleMongoClientDatabaseFactory(mongoClient, dbName);
   }
 
   @Bean
@@ -38,17 +39,29 @@ public class MongoConfig {
   }
 
   @Bean
-  public TracingCommandListener mongoListener() {
-    return new TracingCommandListener.Builder(tracer).build();
+  public CommandListener listener() {
+    return MongoDBTracing.create(tracing).commandListener();
   }
 
   @Bean
-  public MongoClient mongoClient(TracingCommandListener mongoListener) {
+  public MongoClientSettings mongoClientSettings(
+      CommandListener listener, MongoServer mongoServer) {
+    InetSocketAddress serverAddress = mongoServer.getLocalAddress();
+    return MongoClientSettings.builder()
+        .addCommandListener(listener)
+        .applyConnectionString(
+            new ConnectionString(
+                "mongodb://"
+                    + serverAddress.getHostName()
+                    + ":"
+                    + serverAddress.getPort()
+                    + "/"
+                    + dbName))
+        .build();
+  }
 
-    MongoClient mongoClient =
-        MongoClients.create(
-            MongoClientSettings.builder().addCommandListener(mongoListener).build());
-
-    return mongoClient;
+  @Bean
+  public MongoClient mongoClient(MongoClientSettings mongoClientSettings) {
+    return MongoClients.create(mongoClientSettings);
   }
 }

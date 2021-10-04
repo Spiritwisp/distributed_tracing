@@ -3,7 +3,7 @@ package com.godle.presentation.tracing.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collation = "orders")
+@Document(collection = "orders")
 public class Order {
 
   @Id

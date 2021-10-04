@@ -3,6 +3,11 @@ spring:
     name: ordering-service
   zipkin:
     baseUrl: http://localhost:9411
+  data:
+    mongodb:
+      database: test
+      host: localhost
+      port: 27017
 
 
 server:
