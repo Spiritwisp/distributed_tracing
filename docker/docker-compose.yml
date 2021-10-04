@@ -9,6 +9,24 @@ services:
         aliases:
           - "zipkin"
 
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.26
+    environment:
+      COLLECTOR_ZIPKIN_HOST_PORT: 9411
+    ports:
+      # ui
+      - 10480:16686
+      # jaeger-collector
+      - 10482:14268
+      # zipkin collector
+      - 10483:9411
+    networks:
+      backend:
+        aliases:
+          - "jaeger"
+
+
 networks:
   backend:
     driver: bridge
