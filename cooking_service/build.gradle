@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: 'war'
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+war {
+    archiveName 'cooking-service.war'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.3.10'
+    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+//    compileOnly group: 'javax.servlet', name: 'servlet-api', version: '2.5'
+
+}
+
