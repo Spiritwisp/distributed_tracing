@@ -1,7 +1,7 @@
-package com.godle.presentation.tracing.controller;
+package com.godel.presentation.tracing.controller;
 
-import com.godle.presentation.tracing.entity.Order;
-import com.godle.presentation.tracing.service.OrderingService;
+import com.godel.presentation.tracing.entity.Order;
+import com.godel.presentation.tracing.service.OrderingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

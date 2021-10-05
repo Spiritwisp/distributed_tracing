@@ -1,3 +1,9 @@
 /.idea/
 /ordering_service/.gradle/
 /ordering_service/gradle/
+/ordering_service/gradlew
+/ordering_service/gradlew.bat
+/user_service/.gradle/
+/user_service/gradle/
+/user_service/gradlew
+/user_service/gradlew.bat

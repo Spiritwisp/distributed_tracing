@@ -1,6 +1,6 @@
-package com.godle.presentation.tracing.repository;
+package com.godel.presentation.tracing.repository;
 
-import com.godle.presentation.tracing.entity.Order;
+import com.godel.presentation.tracing.entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;

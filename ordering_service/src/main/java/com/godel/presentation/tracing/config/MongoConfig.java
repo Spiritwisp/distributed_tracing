@@ -1,4 +1,4 @@
-package com.godle.presentation.tracing.config;
+package com.godel.presentation.tracing.config;
 
 import brave.Tracing;
 import brave.mongodb.MongoDBTracing;

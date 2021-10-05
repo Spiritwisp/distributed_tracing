@@ -1,4 +1,16 @@
 services:
+  database:
+    build: .
+    ports:
+      - "81:81"
+      - "1521:1521"
+    networks:
+      backend:
+        aliases:
+          - "database"
+    healthcheck:
+      test: "exit 0"
+
   zipkin:
     image: openzipkin/zipkin
     container_name: zipkin
@@ -8,7 +20,6 @@ services:
       backend:
         aliases:
           - "zipkin"
-
 
   jaeger:
     image: jaegertracing/all-in-one:1.26

@@ -1,4 +1,4 @@
-package com.godle.presentation.tracing.entity;
+package com.godel.presentation.tracing.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

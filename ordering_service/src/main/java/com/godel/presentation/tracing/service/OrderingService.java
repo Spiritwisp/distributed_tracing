@@ -1,7 +1,7 @@
-package com.godle.presentation.tracing.service;
+package com.godel.presentation.tracing.service;
 
-import com.godle.presentation.tracing.entity.Order;
-import com.godle.presentation.tracing.repository.OrderingRepository;
+import com.godel.presentation.tracing.entity.Order;
+import com.godel.presentation.tracing.repository.OrderingRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

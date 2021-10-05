@@ -2,8 +2,8 @@ spring:
   application:
     name: ordering-service
   zipkin:
-    baseUrl: http://localhost:9411
-#        baseUrl: http://localhost:10483
+#    baseUrl: http://localhost:9411
+        baseUrl: http://localhost:10483
   data:
     mongodb:
       database: test

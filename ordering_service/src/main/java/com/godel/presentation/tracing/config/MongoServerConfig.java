@@ -1,4 +1,4 @@
-package com.godle.presentation.tracing.config;
+package com.godel.presentation.tracing.config;
 
 import de.bwaldvogel.mongo.MongoServer;
 import de.bwaldvogel.mongo.backend.memory.MemoryBackend;

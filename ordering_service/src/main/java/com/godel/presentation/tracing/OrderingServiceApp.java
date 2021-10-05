@@ -1,6 +1,6 @@
-package com.godle.presentation.tracing;
+package com.godel.presentation.tracing;
 
-import com.godle.presentation.tracing.entity.Order;
+import com.godel.presentation.tracing.entity.Order;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
