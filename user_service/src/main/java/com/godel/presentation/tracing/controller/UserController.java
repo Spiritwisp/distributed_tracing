@@ -1,5 +1,6 @@
 package com.godel.presentation.tracing.controller;
 
+import com.godel.presentation.tracing.entity.Order;
 import com.godel.presentation.tracing.entity.User;
 import com.godel.presentation.tracing.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,10 @@ public class UserController {
   @GetMapping(path = "/{username}")
   public User getUser(@PathVariable String username) {
     return userService.getByUsername(username);
+  }
+
+  @GetMapping(path = "/{userId}/orders/{orderId}")
+  public Order getOrder(@PathVariable Integer userId, @PathVariable Integer orderId) {
+    return userService.getOrder(userId, orderId);
   }
 }

@@ -16,6 +16,7 @@ dependencies {
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth', version: '3.0.4'
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-sleuth-zipkin', version: '3.0.4'
     implementation group: 'io.opentracing.brave', name: 'brave-opentracing', version: '1.0.0'
+//    implementation group: 'io.jaegertracing', name: 'jaeger-core', version: '1.6.0'
 
 }
 

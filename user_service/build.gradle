@@ -23,6 +23,8 @@ dependencies {
     implementation group: 'io.opentracing.contrib', name: 'opentracing-jdbc', version: '0.2.15'
     implementation group: 'io.opentracing.contrib', name: 'opentracing-spring-cloud-jdbc-starter', version: '0.5.9'
 
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '3.0.4'
+
 
 
 
