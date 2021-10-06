@@ -28,8 +28,10 @@ services:
     ports:
       # ui
       - 10480:16686
-      # jaeger-collector
+      # jaeger-collector HTTP
       - 10482:14268
+      # jaeger-collector UDP
+      - 10484:6831/udp
       # zipkin collector
       - 10483:9411
     networks:
