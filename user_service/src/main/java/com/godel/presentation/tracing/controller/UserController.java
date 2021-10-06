@@ -4,10 +4,7 @@ import com.godel.presentation.tracing.entity.Order;
 import com.godel.presentation.tracing.entity.User;
 import com.godel.presentation.tracing.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
@@ -25,8 +22,13 @@ public class UserController {
     return userService.getByUsername(username);
   }
 
-  @GetMapping(path = "/{userId}/orders/{orderId}")
-  public Order getOrder(@PathVariable Integer userId, @PathVariable Integer orderId) {
-    return userService.getOrder(userId, orderId);
+  @GetMapping(path = "/{userId}/orders")
+  public Order getOrder(@PathVariable Integer userId) {
+    return userService.getOrder(userId);
+  }
+
+  @PostMapping(path = "/{userId}/orders")
+  public void cook(@PathVariable Integer userId){
+    userService.createOrder(userId);
   }
 }
