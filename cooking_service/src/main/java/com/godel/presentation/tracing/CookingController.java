@@ -2,10 +2,7 @@ package com.godel.presentation.tracing;
 
 import com.godel.presentation.tracing.service.CookingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
@@ -25,10 +22,10 @@ public class CookingController {
     System.out.println("Cooking " + order);
   }*/
 
-  @PostMapping
-  public void sendToDelivery() throws IOException {
-    service.startDelivery();
+  @PostMapping(path = "/{userId}")
+  public void sendToDelivery(@PathVariable Integer userId) throws IOException {
     System.out.println("Starting delivery");
+    service.startDelivery(userId);
   }
 
   @PostMapping(path = "/confirmation")

@@ -1,6 +1,5 @@
-package com.godel.presenation.tracing.config;
+package com.godel.presentation.tracing.config;
 
-import brave.Tracer;
 import brave.Tracing;
 import brave.baggage.BaggagePropagation;
 import brave.opentracing.BraveTracer;
@@ -9,6 +8,7 @@ import brave.propagation.CurrentTraceContext;
 import brave.propagation.StrictScopeDecorator;
 import brave.propagation.ThreadLocalCurrentTraceContext;
 import brave.servlet.TracingFilter;
+import com.godel.presentation.tracing.utils.HibernateUtil;
 import io.opentracing.util.GlobalTracer;
 import zipkin2.Span;
 import zipkin2.reporter.AsyncReporter;
@@ -69,6 +69,7 @@ public class DelegatingTracingFilter implements Filter {
       tracing.close(); // disables Tracing.current()
       spanReporter.close(); // stops reporting thread and flushes data
       sender.close(); // closes any transport resources
+      HibernateUtil.shutdown(); //closes sql session
     } catch (IOException e) {
       e.printStackTrace();
     }

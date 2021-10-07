@@ -1,4 +1,4 @@
-package com.godel.presenation.tracing.config;
+package com.godel.presentation.tracing.config;
 
 import com.sun.jersey.api.client.ClientHandlerException;
 import com.sun.jersey.api.client.ClientRequest;

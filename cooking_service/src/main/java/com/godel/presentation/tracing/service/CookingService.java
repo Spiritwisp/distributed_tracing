@@ -11,7 +11,7 @@ import java.io.IOException;
 @Service
 public class CookingService {
 
-  private static final String DELIVERY_URL = "http://localhost:8081/delivery-service/delivery";
+  private static final String DELIVERY_URL = "http://localhost:8081/delivery-service/users/";
   private final HttpClient httpClient;
 
   @Autowired
@@ -19,7 +19,7 @@ public class CookingService {
     this.httpClient = httpClient;
   }
 
-  public void startDelivery() throws IOException {
-    httpClient.execute(new HttpPost(DELIVERY_URL));
+  public void startDelivery(Integer userId) throws IOException {
+    httpClient.execute(new HttpPost(DELIVERY_URL + userId));
   }
 }
