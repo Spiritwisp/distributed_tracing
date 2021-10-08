@@ -16,13 +16,23 @@ public class OrderingController {
     this.service = service;
   }
 
+  @GetMapping(path = "/hello")
+  public String hello() {
+    return "Hello from ordering service!";
+  }
+
   @GetMapping(path = "/{id}")
   public Order getOrder(@PathVariable String id) {
     return service.getById(id);
   }
 
   @PostMapping
-  public void cook(@RequestBody String order){
+  public void cook(@RequestBody String order) {
     service.createOrder(order);
+  }
+
+  @GetMapping(path = "/cookies/ping")
+  public String helloFromCookingService() {
+    return service.pingCookingService();
   }
 }

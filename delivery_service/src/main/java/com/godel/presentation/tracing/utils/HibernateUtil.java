@@ -27,7 +27,7 @@ public final class HibernateUtil {
       // Create the SessionFactory from hibernate.cfg.xml
       Driver h2Driver = Driver.load();
       DriverManager.registerDriver(h2Driver);
-//      TracingDriver.ensureRegisteredAsTheFirstDriver();
+      TracingDriver.ensureRegisteredAsTheFirstDriver();
       return new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 
     } catch (Throwable ex) {

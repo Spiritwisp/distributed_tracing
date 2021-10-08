@@ -16,4 +16,7 @@ public interface OrderingServiceFeignClient {
 
   @RequestMapping(method = RequestMethod.POST, value = "/orders", consumes = "application/json")
   Order createOrder(@RequestBody String orderName);
+
+  @RequestMapping(method = RequestMethod.GET, value = "/orders/hello", consumes = "application/json")
+  String hello();
 }

@@ -31,4 +31,8 @@ public class UserService {
     Order order = getOrder(userId);
     feignClient.createOrder(order.getName());
   }
+
+  public String pingOrderingService(){
+    return feignClient.hello();
+  }
 }

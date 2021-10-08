@@ -17,10 +17,11 @@ public class CookingController {
     this.service = service;
   }
 
-/*  @PostMapping
-  public void cook(@RequestBody String order) {
+  @PostMapping
+  public void cook(@RequestBody String order) throws IOException {
     System.out.println("Cooking " + order);
-  }*/
+    service.startDelivery(1);
+  }
 
   @PostMapping(path = "/{userId}")
   public void sendToDelivery(@PathVariable Integer userId) throws IOException {
@@ -31,5 +32,15 @@ public class CookingController {
   @PostMapping(path = "/confirmation")
   public void deliveryConfirm(@RequestBody String message) {
     System.out.println(message);
+  }
+
+  @GetMapping(path = "/hello")
+  public String hello() {
+    return "Hello from Cooking service";
+  }
+
+  @GetMapping(path = "/deliveries/hello")
+  public String pingDeliveryService() throws IOException {
+    return service.pingDeliveryService();
   }
 }

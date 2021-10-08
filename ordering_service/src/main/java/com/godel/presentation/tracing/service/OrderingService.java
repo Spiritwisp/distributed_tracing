@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.URI;
+
 @Service
 public class OrderingService {
 
@@ -28,10 +30,15 @@ public class OrderingService {
     return repository.findById(id);
   }
 
-  public void createOrder(String orderName){
+  public void createOrder(String orderName) {
     String url = "http://localhost:8080/cooking-service/cookies";
     restTemplate.postForEntity(url, orderName, String.class);
   }
 
-
+  public String pingCookingService() {
+    String url = "http://localhost:8080/cooking-service/cookies/hello";
+    URI uri = URI.create(url);
+    ResponseEntity<String> forEntity = restTemplate.getForEntity(uri, String.class);
+    return forEntity.getBody();
+  }
 }

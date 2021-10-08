@@ -17,6 +17,11 @@ public class UserController {
     this.userService = userService;
   }
 
+  @GetMapping(path = "/hello")
+  public String getHello() {
+    return "Hello from user service!";
+  }
+
   @GetMapping(path = "/{username}")
   public User getUser(@PathVariable String username) {
     return userService.getByUsername(username);
@@ -28,7 +33,13 @@ public class UserController {
   }
 
   @PostMapping(path = "/{userId}/orders")
-  public void cook(@PathVariable Integer userId){
+  public void cook(@PathVariable Integer userId) {
     userService.createOrder(userId);
   }
+
+  @GetMapping(path = "/orders/ping")
+  public String pingOrderingService() {
+    return userService.pingOrderingService();
+  }
 }
+  Tracing Feign Client
