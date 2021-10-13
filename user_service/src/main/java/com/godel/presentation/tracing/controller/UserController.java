@@ -42,4 +42,3 @@ public class UserController {
     return userService.pingOrderingService();
   }
 }
-  Tracing Feign Client

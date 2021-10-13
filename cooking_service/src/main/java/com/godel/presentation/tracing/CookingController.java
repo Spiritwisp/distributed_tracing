@@ -19,7 +19,7 @@ public class CookingController {
 
   @PostMapping
   public void cook(@RequestBody String order) throws IOException {
-    System.out.println("Cooking " + order);
+    service.cook(order);
     service.startDelivery(1);
   }
 

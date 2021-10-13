@@ -31,12 +31,12 @@ public class OrderingService {
   }
 
   public void createOrder(String orderName) {
-    String url = "http://localhost:8080/cooking-service/cookies";
+    String url = "http://localhost:8084/cooking-service/cookies";
     restTemplate.postForEntity(url, orderName, String.class);
   }
 
   public String pingCookingService() {
-    String url = "http://localhost:8080/cooking-service/cookies/hello";
+    String url = "http://localhost:8084/cooking-service/cookies/hello";
     URI uri = URI.create(url);
     ResponseEntity<String> forEntity = restTemplate.getForEntity(uri, String.class);
     return forEntity.getBody();

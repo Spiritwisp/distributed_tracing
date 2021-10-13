@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 public class JerseyClientService {
 
   private static final String CONFIRMATION_URL =
-      "http://localhost:8080/cooking-service/cookies/confirmation";
+      "http://localhost:8084/cooking-service/cookies/confirmation";
   private final Client client;
 
   public JerseyClientService(HttpServletRequest request) {

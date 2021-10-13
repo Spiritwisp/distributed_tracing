@@ -1,6 +1,5 @@
 package com.godel.presentation.tracing.service;
 
-import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -18,6 +17,10 @@ public class CookingService {
   @Autowired
   public CookingService(HttpClient httpClient) {
     this.httpClient = httpClient;
+  }
+
+  public void cook(String order) {
+    System.out.println("Cooking " + order);
   }
 
   public void startDelivery(Integer userId) throws IOException {
