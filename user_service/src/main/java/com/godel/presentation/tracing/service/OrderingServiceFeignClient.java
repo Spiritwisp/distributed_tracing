@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(name = "ordering-service", url = "http://localhost:8081")
+@FeignClient(
+        name = "${feign.client.ordering-service.name}",
+        url = "${feign.client.ordering-service.url")
 public interface OrderingServiceFeignClient {
 
   @RequestMapping(method = RequestMethod.GET, value = "/orders/{id}", consumes = "application/json")
   Order getOrder(@PathVariable("id") Integer id);
-
 
   @RequestMapping(method = RequestMethod.POST, value = "/orders", consumes = "application/json")
   Order createOrder(@RequestBody String orderName);
