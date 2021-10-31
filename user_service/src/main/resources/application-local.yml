@@ -1,0 +1,4 @@
+# -Dspring-boot.run.profiles=local
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb

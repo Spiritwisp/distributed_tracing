@@ -20,7 +20,11 @@ spring:
         dialect: org.hibernate.dialect.H2Dialect
     show-sql: true
 
-
 server:
   port: 8083
 
+feign:
+  client:
+    ordering-service:
+      name: ordering-service
+      url: http://localhost:8081

@@ -3,19 +3,15 @@ package com.godel.presentation.tracing.controller;
 import com.godel.presentation.tracing.entity.Order;
 import com.godel.presentation.tracing.entity.User;
 import com.godel.presentation.tracing.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
+@RequiredArgsConstructor
 public class UserController {
 
   private final UserService userService;
-
-  @Autowired
-  public UserController(UserService userService) {
-    this.userService = userService;
-  }
 
   @GetMapping(path = "/hello")
   public String getHello() {
